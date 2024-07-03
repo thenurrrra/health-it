@@ -1,0 +1,27 @@
+.equipment {
+  margin-top: 50px;
+  border: 2px solid #6b1839;
+  padding: 50px;
+  border-radius: 50px;
+  &__inner {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 100px;
+    .equ-img {
+      img {
+        width: 400px;
+        border-radius: 20px;
+      }
+    }
+    .equ-description {
+      h2 {
+      }
+      h1 {
+        margin: 10px 0 20px 0;
+      }
+      p {
+      }
+    }
+  }
+}

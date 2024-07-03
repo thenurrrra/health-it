@@ -1,0 +1,70 @@
+.equ {
+  width: 1150px;
+  margin-bottom: 50px;
+  &__main-text {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 20px 0 20px 20px;
+    img {
+      width: 50px;
+    }
+  }
+  .equipments-list {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    .equipment-card {
+      border: 1px solid #6b1839;
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      transition: 0.2s linear;
+      .equ-img {
+        img {
+          width: 250px;
+          border-radius: 15px;
+        }
+      }
+      .equ-adds {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+        .equ-cart {
+          margin-top: 10px;
+          button {
+            font-size: 15px;
+            font-weight: 500;
+            padding: 0 10px;
+            border: 2px solid #6b1839;
+            border-radius: 10px;
+            background-color: #6b1839;
+            transition: 0.2s linear;
+          }
+          button:hover {
+            background-color: transparent;
+          }
+          .added {
+            font-size: 15px;
+            font-weight: 500;
+            padding: 0 10px;
+            border: 2px solid #6b1839;
+            border-radius: 10px;
+          }
+        }
+        .equ-fav {
+          button {
+            margin-top: 10px;
+            color: #6b1839;
+            font-size: 30px;
+          }
+        }
+      }
+    }
+    .equipment-card:hover {
+      box-shadow: 0 0 50px #6b1839;
+    }
+  }
+}

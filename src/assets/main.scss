@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
+@import "./base.scss";
+@import "@/layout/Header/Header.scss";
+@import "@/layout/Sidebar/Sidebar.scss";
+@import "@/views/CartView/CartView.scss";
+@import "@/views/MainView/MainView.scss";
+@import "@/views/EquipmentsView/EquipmentsView.scss";
+@import "@/views/NutritionsView/NutritionsView.scss";
+@import "@/views/EquipmentView/EquipmentView.scss";
+@import "@/views/NutritionView/NutritionView.scss";
+@import "@/views/FavoritesView/FavoritesView.scss";
+@import "@/views/ProfileView/ProfileView.scss";
+@import "@/views/LoginView/LoginView.scss";
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 1) 81%,
+    rgba(64, 31, 31, 1) 100%,
+    rgba(82, 40, 40, 1) 100%
+  );
+  color: #fff;
+  width: 100%;
+  max-width: 1700px;
+  margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+li {
+  list-style-type: none;
+}
+
+// .wrapper {
+//   width: 100%;
+//   max-width: px;
+//   margin: 0 auto;
+// }
