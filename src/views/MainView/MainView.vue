@@ -21,7 +21,7 @@
           </div>
         </div>
       </router-link>
-      <router-link to="/nutrition">
+      <router-link to="/nutritions">
         <div class="select-foods">
           <div class="select_img">
             <img src="@/assets/images/food.jpg" alt="" />

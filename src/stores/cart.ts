@@ -16,10 +16,22 @@ export const useCartStore = defineStore("cart", () => {
     cartNutritions.value = products.filter((item) => item !== product);
   }
 
+  function loadCart() {
+    const savedCartEquipments = localStorage.getItem("cartEquipments");
+    const savedCartNutritions = localStorage.getItem("cartNutritions");
+    if (savedCartEquipments) {
+      cartEquipments.value = JSON.parse(savedCartEquipments);
+    }
+    if (savedCartNutritions) {
+      cartNutritions.value = JSON.parse(savedCartNutritions);
+    }
+  }
+
   return {
     cartEquipments,
     cartNutritions,
     removeEquipmentFromCart,
     removeNutritionFromCart,
+    loadCart,
   };
 });

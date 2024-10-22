@@ -8,8 +8,13 @@ export const useNutritionsStore = defineStore("nutrition", () => {
   const nutrition = ref<Nutrition | null>(null);
 
   async function fetchNutritions() {
-    const { data } = await axios("http://localhost:3000/nutritions");
-    nutritions.value = data;
+    try {
+      const { data } = await axios.get("http://localhost:3000/nutritions");
+      nutritions.value = data;
+    } catch (error) {
+      console.error("Error fetching nutritions:", error);
+      // Handle error as needed
+    }
   }
 
   async function getNutritionById(id: string) {
@@ -23,10 +28,37 @@ export const useNutritionsStore = defineStore("nutrition", () => {
     }
   }
 
+  //CRUD
+  async function createNutrition(newNutrition: Nutrition) {
+    try {
+      const { data } = await axios.post(
+        "http://localhost:3000/nutritions",
+        newNutrition
+      );
+      nutritions.value.push(data);
+    } catch (error) {
+      console.error("Error creating nutrition:", error);
+      // Handle error as needed
+    }
+  }
+
+  async function deleteNutrition(id: string) {
+    try {
+      await axios.delete(`http://localhost:3000/nutritions/${id}`);
+      nutritions.value = nutritions.value.filter(
+        (nutrition) => nutrition.id !== id
+      );
+    } catch (error) {
+      console.error("Failed to delete equipment:", error);
+    }
+  }
+
   return {
     nutrition,
     nutritions,
     fetchNutritions,
     getNutritionById,
+    createNutrition,
+    deleteNutrition,
   };
 });

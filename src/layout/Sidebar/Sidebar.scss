@@ -44,6 +44,11 @@ nav {
       align-items: center;
       gap: 15px;
       position: relative;
+      .user-avatar {
+        width: 40px;
+        margin-top: 9px;
+        border-radius: 20px;
+      }
       img.block {
         width: 20px;
         height: 20px;

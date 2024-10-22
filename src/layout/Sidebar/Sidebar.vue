@@ -1,7 +1,22 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from "vue-router";
+import { useAuthStore } from "@/stores/auth";
 import { useFavoritesStore } from "@/stores/favorites";
 import { storeToRefs } from "pinia";
+import { onBeforeMount, computed } from "vue";
+
+// Получаем методы и состояния из auth store
+const authStore = useAuthStore();
+const user = computed(() => authStore.user);
+const { getUserDetails, logout } = authStore;
+
+// Вызываем getUserDetails при монтировании компонента
+onBeforeMount(async () => {
+  if (authStore.accessToken) {
+    await getUserDetails();
+  }
+});
+
 const favStore = useFavoritesStore();
 const { favItems } = storeToRefs(favStore);
 </script>
@@ -28,8 +43,17 @@ const { favItems } = storeToRefs(favStore);
             </router-link>
             <router-link to="/profile">
               <div class="router-name">
-                <img src="@/assets/images/user.png" alt="" class="block" />
-                <img src="@/assets/images/user-hover.png" alt="" class="none" />
+                <div v-if="user">
+                  <img :src="user.avatar" alt="" class="user-avatar" />
+                </div>
+                <div v-else>
+                  <img src="@/assets/images/user.png" alt="" class="block" />
+                  <img
+                    src="@/assets/images/user-hover.png"
+                    alt=""
+                    class="none"
+                  />
+                </div>
                 <p>Профиль</p>
               </div>
             </router-link>
@@ -42,7 +66,7 @@ const { favItems } = storeToRefs(favStore);
                 </p>
               </div>
             </router-link>
-            <router-link to="/login">
+            <router-link to="/login" v-if="!user">
               <div class="router-name">
                 <img src="@/assets/images/login.png" alt="" class="block" />
                 <img
@@ -51,6 +75,17 @@ const { favItems } = storeToRefs(favStore);
                   class="none"
                 />
                 <p>Войти</p>
+              </div>
+            </router-link>
+            <router-link to="/admin" v-if="user">
+              <div class="router-name">
+                <img src="@/assets/images/admin.png" alt="" class="block" />
+                <img
+                  src="@/assets/images/admin-hover.png"
+                  alt=""
+                  class="none"
+                />
+                <p>Админская панель</p>
               </div>
             </router-link>
           </li>

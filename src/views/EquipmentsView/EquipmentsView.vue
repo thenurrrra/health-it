@@ -13,6 +13,7 @@ const { equipments } = storeToRefs(equipmentsStore);
 const cartStore = useCartStore();
 const { cartEquipments } = storeToRefs(cartStore);
 const text = ref("Все");
+console.log(equipments.value);
 
 const dumbbells = ref(
   equipments.value.filter((equipment) => equipment.category === "dumbbell")
@@ -29,18 +30,29 @@ function addToCart(cartItem: Equipment) {
 
   if (index !== -1) {
     cartEquipments.value.splice(index, 1);
+    localStorage.setItem(
+      "cartEquipments",
+      JSON.stringify(cartEquipments.value)
+    );
   } else {
     cartEquipments.value.push(cartItem);
+    localStorage.setItem(
+      "cartEquipments",
+      JSON.stringify(cartEquipments.value)
+    );
   }
 }
+console.log(cartEquipments);
 
 function addToFav(favItem: Equipment) {
   const index = favItems.value.findIndex((item) => item === favItem);
 
   if (index !== -1) {
     favItems.value.splice(index, 1);
+    localStorage.setItem("favItems", JSON.stringify(favItems.value));
   } else {
     favItems.value.push(favItem);
+    localStorage.setItem("favItems", JSON.stringify(favItems.value));
   }
 }
 
@@ -62,6 +74,7 @@ function getHeartButtonText(item: Equipment) {
 
 onBeforeMount(() => {
   equipmentsStore.fetchEquipments();
+  console.log(equipments);
 });
 </script>
 <template>

@@ -1,18 +1,49 @@
 <script setup lang="ts">
 import { useFavoritesStore } from "@/stores/favorites";
 import type { Equipment } from "@/types/Equipment";
+import { useCartStore } from "@/stores/cart";
 import { storeToRefs } from "pinia";
 const favoritesStore = useFavoritesStore();
 const { favItems } = storeToRefs(favoritesStore);
+const cartStore = useCartStore();
+const { cartEquipments } = storeToRefs(cartStore);
 
 console.log(favItems);
 
 function clear() {
   favItems.value = [];
+  localStorage.setItem("favItems", JSON.stringify(favItems.value));
+}
+
+function addToCart(cartItem: Equipment) {
+  const index = cartEquipments.value.findIndex((item) => item === cartItem);
+
+  if (index !== -1) {
+    cartEquipments.value.splice(index, 1);
+    localStorage.setItem(
+      "cartEquipments",
+      JSON.stringify(cartEquipments.value)
+    );
+  } else {
+    cartEquipments.value.push(cartItem);
+    localStorage.setItem(
+      "cartEquipments",
+      JSON.stringify(cartEquipments.value)
+    );
+  }
+}
+
+function getButtonText(item: Equipment) {
+  if (cartEquipments.value.includes(item)) {
+    return "Убрать из корзины";
+  } else {
+    return "В корзину";
+  }
 }
 
 function removeFav(product: Equipment, products: Equipment[]) {
   favoritesStore.removeFav(product, products);
+  localStorage.setItem("favItems", JSON.stringify(favItems.value));
 }
 </script>
 <template>
@@ -40,9 +71,19 @@ function removeFav(product: Equipment, products: Equipment[]) {
                 <div class="cart__equ-price">
                   <h3>{{ equipment.price }}</h3>
                 </div>
-                <div class="cart__equ-delete">
+                <div
+                  class="cart__equ-delete"
+                  style="display: flex; flex-direction: column; gap: 20px"
+                >
                   <button @click.prevent="removeFav(equipment, favItems)">
                     Удалить из избранных
+                  </button>
+
+                  <button
+                    @click.prevent="addToCart(equipment)"
+                    :class="{ added: cartEquipments.includes(equipment) }"
+                  >
+                    {{ getButtonText(equipment) }}
                   </button>
                 </div>
               </div>

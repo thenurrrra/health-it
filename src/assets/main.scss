@@ -11,14 +11,18 @@
 @import "@/views/FavoritesView/FavoritesView.scss";
 @import "@/views/ProfileView/ProfileView.scss";
 @import "@/views/LoginView/LoginView.scss";
+@import "@/views/AdminView/AdminView.scss";
+@import "@/views/EquipmentUpdateView/EquipmentUpdateView.scss";
+@import "@/views/NutritionUpdateView/NutritionUpdateView.scss";
+@import "@/views/SigninView/SigninView.scss";
 
 body {
   font-family: "Montserrat", sans-serif;
-  background: radial-gradient(
-    circle,
-    rgba(0, 0, 0, 1) 81%,
-    rgba(64, 31, 31, 1) 100%,
-    rgba(82, 40, 40, 1) 100%
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 1) 28%,
+    rgba(34, 0, 0, 1) 100%,
+    rgba(64, 31, 31, 1) 100%
   );
   color: #fff;
   width: 100%;

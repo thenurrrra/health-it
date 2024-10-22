@@ -12,16 +12,15 @@
   },
   "dependencies": {
     "axios": "^1.7.2",
-    "cors": "^2.8.5",
-    "firebase": "^10.12.2",
     "json-server": "^1.0.0-beta.1",
     "pinia": "^2.1.7",
-    "vue": "^3.4.21",
+    "vue": "^3.4.31",
     "vue-router": "^4.3.0",
-    "vuetify": "^3.6.0-beta.0.0"
+    "vuetify": "^3.6.11"
   },
   "devDependencies": {
     "@tsconfig/node20": "^20.1.4",
+    "@types/express": "^4.17.21",
     "@types/node": "^20.14.9",
     "@vitejs/plugin-vue": "^5.0.4",
     "@vue/tsconfig": "^0.5.1",

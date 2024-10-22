@@ -14,5 +14,12 @@ export const useFavoritesStore = defineStore("favorites", () => {
     favItems.value = products.filter((item) => item !== product);
   }
 
-  return { favItems, addToFav, removeFav };
+  function loadFavs() {
+    const savedFavs = localStorage.getItem("favItems");
+    if (savedFavs) {
+      favItems.value = JSON.parse(savedFavs);
+    }
+  }
+
+  return { favItems, addToFav, removeFav, loadFavs };
 });

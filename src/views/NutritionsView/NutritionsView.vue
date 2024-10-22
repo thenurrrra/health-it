@@ -29,8 +29,16 @@ function addToCart(cartItem: Nutrition) {
 
   if (index !== -1) {
     cartNutritions.value.splice(index, 1);
+    localStorage.setItem(
+      "cartNutritions",
+      JSON.stringify(cartNutritions.value)
+    );
   } else {
     cartNutritions.value.push(cartItem);
+    localStorage.setItem(
+      "cartNutritions",
+      JSON.stringify(cartNutritions.value)
+    );
   }
 }
 
@@ -39,8 +47,10 @@ function addToFav(favItem: Nutrition) {
 
   if (index !== -1) {
     favItems.value.splice(index, 1);
+    localStorage.setItem("favItems", JSON.stringify(favItems.value));
   } else {
     favItems.value.push(favItem);
+    localStorage.setItem("favItems", JSON.stringify(favItems.value));
   }
 }
 
