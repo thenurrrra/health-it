@@ -18,7 +18,7 @@ const { cartNutritions } = storeToRefs(cartStore);
             </div>
             <div class="logo-text">
               <h3>health <span>it</span></h3>
-              <p>Интернет-магазин спортивных товаров</p>
+              <p>Интернет-магазин спортивных товаров.</p>
             </div>
           </div>
         </router-link>
